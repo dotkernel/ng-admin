@@ -1,0 +1,44 @@
+<app-auth-layout>
+  <div class="row" authContent>
+    <div class="col-sm-12 col-md-5 col-lg-5 reset-padding">
+        <div class="image-container h-100">
+            <img src="../../../../../assets/images/dreamer-f90.jpg" alt="login icon">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-7 col-lg-7 login-column reset-padding">
+        <div class="login-form">
+            <form>
+                <app-row>
+                    <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email">
+                    </mat-form-field>
+                </app-row>
+
+                <app-row>
+                    <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
+                        <mat-label>Password</mat-label>
+                        <input matInput placeholder="Password">
+                    </mat-form-field>
+                </app-row>
+
+                <app-row>
+                    <mat-checkbox color="warn" class="float-left mobileFont" checked="true" rowContent >
+                        I have read and agree to the terms of service.
+                    </mat-checkbox>
+                </app-row>
+
+                <app-row>
+                    <button mat-raised-button color="primary" class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/login')">Sign in to Enter Dashboard</button>
+                    <span class="float-left ml-3 mr-3 mt-3 mobileMargin" rowContent>or</span>
+                    <button mat-button class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/register')">Sign Up</button>
+                </app-row>
+
+                <app-row>
+                    <button mat-button class="float-left mt-3" color="primary" rowContent (click)="service.goTo('/auth/forgot-password')">Forgot password?</button>
+                </app-row>
+            </form>
+        </div>
+    </div>
+  </div>
+</app-auth-layout>
