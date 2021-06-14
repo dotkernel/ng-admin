@@ -8,6 +8,11 @@ const routes: Routes = [
       .then(m => m.AuthenticationModule),
   },
   {
+    path: 'main',
+    loadChildren: () => import('./core/main/main.module')
+      .then(m => m.MainModule),
+  },
+  {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full'
@@ -20,8 +25,8 @@ const routes: Routes = [
 ];
 
 const config: ExtraOptions = {
-    useHash: false,
-  };
+  useHash: false,
+};
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, config)],

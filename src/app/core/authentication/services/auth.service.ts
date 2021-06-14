@@ -9,6 +9,8 @@ export class AuthService {
   constructor(private router: Router) { }
 
   public goTo(destination: string): void {
+    console.log(destination);
+    
     this.router.navigate([destination]);
   }
 }
