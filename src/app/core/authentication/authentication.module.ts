@@ -14,6 +14,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RowComponent } from '../../common/row/row.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { ForgoPwdComponent } from './pages/forgo-pwd/forgo-pwd.component';
+import {MatIconModule} from '@angular/material/icon';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,9 @@ import { ForgoPwdComponent } from './pages/forgo-pwd/forgo-pwd.component';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    MatIconModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AuthenticationModule { }

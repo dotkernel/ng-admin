@@ -6,6 +6,10 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MiscellaneousModule } from './core/miscellaneous/miscellaneous.module';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {CustomErrorStateMatcher} from './core/authentication/helpers'
 
 @NgModule({
   declarations: [
@@ -17,9 +21,14 @@ import { MiscellaneousModule } from './core/miscellaneous/miscellaneous.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     CommonModule,
-    MiscellaneousModule
+    MiscellaneousModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
