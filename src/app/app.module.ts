@@ -6,10 +6,11 @@ import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { MiscellaneousModule } from './core/miscellaneous/miscellaneous.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
-import {CustomErrorStateMatcher} from './core/authentication/helpers'
+import {CustomErrorStateMatcher, ErrorInterceptor, TokenInterceptor} from './core/authentication/helpers';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,18 @@ import {CustomErrorStateMatcher} from './core/authentication/helpers'
     MiscellaneousModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      autoDismiss: true,
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
   ],
   providers: [
-    {provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher}
+    { provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

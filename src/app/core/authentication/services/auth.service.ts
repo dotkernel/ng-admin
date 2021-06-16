@@ -12,6 +12,8 @@ import {Token} from '../models';
 export class AuthService {
   private tokenDataSubject: BehaviorSubject<Token>;
   public token: Observable<Token>;
+  private userAccountSubject: BehaviorSubject<any>;
+  public userAccount: Observable<any>;
 
   constructor(private router: Router,
               private http: HttpClient) {
@@ -20,8 +22,6 @@ export class AuthService {
   }
 
   public goTo(destination: string): void {
-    console.log(destination);
-
     this.router.navigate([destination]);
   }
 
@@ -34,10 +34,10 @@ export class AuthService {
     data.append('grant_type', 'password');
     data.append('username', username);
     data.append('password', password);
-    data.append('client_id', 'dotkernel');
-    data.append('client_secret', 'dotkernel');
-    data.append('scope', 'admin');
-    return this.http.post<any>(`${environment.apiUrl}/oauth2/generate`, data)
+    data.append('client_id', 'frontend');
+    data.append('client_secret', 'frontend');
+    data.append('scope', 'api');
+    return this.http.post<any>(`${environment.apiUrl}security/generate-token`, data)
       .pipe(map(tokenData => {
         // store token in local storage to keep user logged in between page refreshes
         tokenData.timestamp = new Date().getTime();
@@ -47,9 +47,27 @@ export class AuthService {
       }));
   }
 
+  getUserAccount() {
+    return this.http.get(environment.apiUrl + `user/my-account`)
+      .pipe(map((res: any) => {
+        this.userAccountSubject.next(res);
+        return res;
+      }),
+    );
+  }
+
   logout() {
     // remove token from local storage to log user out
     localStorage.removeItem('tokenData');
     this.tokenDataSubject.next(null);
+    this.router.navigate(['auth/login']);
+  }
+
+  register(user) {
+    return this.http.post(`${environment.apiUrl}account/register`, user);
+  }
+
+  activateUser(hash) {
+    return this.http.patch(`${environment.apiUrl}account/activate/${hash}`, null);
   }
 }

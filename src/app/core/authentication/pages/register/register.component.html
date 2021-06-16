@@ -7,32 +7,37 @@
     </div>
     <div class="col-sm-12 col-md-7 col-lg-7 login-column reset-padding">
         <div class="login-form">
-            <form>
-                <app-row>
-                    <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
-                        <mat-label>Uername</mat-label>
-                        <input matInput placeholder="Username">
-                    </mat-form-field>
-                </app-row>
-
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email">
+                        <input matInput placeholder="Email" formControlName="identity">
+                        <mat-error *ngIf="f.identity.errors?.email">Please enter a valid email.</mat-error>
+                        <mat-error *ngIf="f.identity.errors?.required">Email is required.</mat-error>
                     </mat-form-field>
                 </app-row>
 
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
                         <mat-label>Password</mat-label>
-                        <input matInput placeholder="Password">
+                        <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="f.password.errors?.required">Password is required.</mat-error>
+                        <mat-error *ngIf="f.password.errors?.minlength">Password must be at least 6 characters.</mat-error>
                     </mat-form-field>
                 </app-row>
 
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
                         <mat-label>Confirm Password</mat-label>
-                        <input matInput placeholder="ConfirmPassword">
+                        <input matInput placeholder="ConfirmPassword" formControlName="passwordConfirm" [type]="hideConfirm ? 'password' : 'text'">
+                        <button type="button" mat-icon-button matSuffix (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
+                            <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="f.passwordConfirm.errors?.required">Password is required.</mat-error>
+                        <mat-error *ngIf="f.passwordConfirm.errors?.mustMatch">Passwords must match.</mat-error>
                     </mat-form-field>
                 </app-row>
 
@@ -45,7 +50,7 @@
                 <app-row>
                     <button mat-raised-button color="primary" class="float-left mt-2 mobileFont" rowContent>Sign up</button>
                     <span class="float-left ml-3 mr-3 mt-3 mobileMargin" rowContent>or</span>
-                    <button mat-button class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/login')">Sign in</button>
+                    <button type="button" mat-button class="float-left mt-2 mobileFont" rowContent routerLink="/auth/login">Sign in</button>
                 </app-row>
 
             </form>

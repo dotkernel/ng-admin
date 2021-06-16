@@ -7,43 +7,49 @@
     </div>
     <div class="col-sm-12 col-md-7 col-lg-7 login-column reset-padding">
         <div class="login-form">
-            <form>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
                         <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email" [formControl]="email" required>
-                        <mat-error *ngIf="email.invalid">Email is required.</mat-error>
+                        <input matInput placeholder="Email" formControlName="email">
+                        <mat-error *ngIf="f.email.errors">Email is required.</mat-error>
                     </mat-form-field>
                 </app-row>
 
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
                         <mat-label>Password</mat-label>
-                        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="password" required>
+                        <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
                         <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </button>
-                        <mat-error *ngIf="password.invalid">Password is required.</mat-error>
+
+                        <mat-error *ngIf="f.password.errors">Password is required.</mat-error>
                     </mat-form-field>
                 </app-row>
 
                 <app-row>
                     <div rowContent>
-                        <mat-checkbox color="warn" class="float-left mobileFont" [formControl]="terms" >
+                        <mat-checkbox color="primary" class="float-left mobileFont" formControlName="terms">
                             I have read and agree to the terms of service.
                         </mat-checkbox>
-                        <mat-error *ngIf="terms.invalid">You must agree term of service.</mat-error>
+                        <mat-error class="mat-form-field-subscript-wrapper error-align" *ngIf="f.terms.errors">You must agree term of service.</mat-error>
                     </div>
                 </app-row>
 
                 <app-row>
-                    <button mat-raised-button color="primary" class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/main/home')" >Sign in</button>
-                    <span class="float-left ml-3 mr-3 mt-3 mobileMargin" rowContent>or</span>
-                    <button mat-button class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/register')">Sign Up</button>
+                    <div rowContent class="mt-3">
+                        <button mat-raised-button color="primary" class="float-left mt-2 mobileFont" [disabled]="loading">
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Sign in
+                        </button>
+                        <span class="float-left ml-3 mr-3 mt-3 mobileMargin" rowContent>or</span>
+                        <button type="button" mat-button class="float-left mt-2 mobileFont" rowContent routerLink="/auth/register">Sign Up</button>
+                    </div>
                 </app-row>
 
                 <app-row>
-                    <button mat-button class="float-left mt-3" color="primary" rowContent (click)="service.goTo('/auth/forgot-password')">Forgot password?</button>
+                    <button type="button" mat-button class="float-left mt-3" color="primary" rowContent routerLink="/auth/forgot-password">Forgot password?</button>
                 </app-row>
             </form>
         </div>

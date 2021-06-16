@@ -4,6 +4,7 @@ import { AuthenticationComponent } from './authentication.component';
 import { ForgoPwdComponent } from './pages/forgo-pwd/forgo-pwd.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import {ActivateUserComponent} from './pages/activate-user/activate-user.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
       {
         path: 'forgot-password',
         component: ForgoPwdComponent
+      },
+      {
+        path: 'activate-user/:hash',
+        component: ActivateUserComponent
       },
     ]
   },

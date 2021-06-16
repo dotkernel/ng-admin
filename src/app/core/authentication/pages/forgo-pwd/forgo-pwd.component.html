@@ -18,7 +18,7 @@
                 <app-row>
                     <button mat-raised-button color="primary" class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/login')">Reset Password</button>
                     <span class="float-left ml-3 mr-3 mt-3 mobileMargin" rowContent>or</span>
-                    <button mat-button class="float-left mt-2 mobileFont" rowContent (click)="service.goTo('/auth/login')">Sign in</button>
+                    <button mat-button class="float-left mt-2 mobileFont" rowContent routerLink="/auth/login">Sign in</button>
                 </app-row>
             </form>
         </div>

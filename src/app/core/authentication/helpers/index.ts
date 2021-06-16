@@ -2,3 +2,4 @@
 export * from './error.interceptor';
 export * from './token.interceptor';
 export * from './custom-error-state-matcher';
+export * from './must-match.validator';

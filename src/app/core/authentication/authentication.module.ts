@@ -16,6 +16,9 @@ import { AuthLayoutComponent } from './components/auth-layout/auth-layout.compon
 import { ForgoPwdComponent } from './pages/forgo-pwd/forgo-pwd.component';
 import {MatIconModule} from '@angular/material/icon';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+import {CustomErrorStateMatcher} from './helpers';
+import { ActivateUserComponent } from './pages/activate-user/activate-user.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     RowComponent,
     ForgoPwdComponent,
     AuthLayoutComponent,
+    ActivateUserComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +42,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  providers: [
+    {provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher}
+  ],
 })
 export class AuthenticationModule { }

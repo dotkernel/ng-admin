@@ -8,7 +8,6 @@
 .image-container img {
     width: 200px;
     height: 134px;
-    margin-top: 25%;
 }
 
 .login-form {
@@ -25,8 +24,9 @@
     padding-bottom: 0;
 }
 
-.form-input {
-    width: 420px !important;
+.activate-icon {
+    font-size: 60px;
+    width: auto;
 }
 
 @media screen and (max-width: 765px) {
@@ -70,9 +70,4 @@
     .mobileMargin {
         margin: 0px 8px 0px !important;
     }
-}
-
-.error-align {
-    text-align: left;
-    padding-left: 10.5px;
 }

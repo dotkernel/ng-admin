@@ -1,0 +1,57 @@
+<app-auth-layout>
+    <div class="row" authContent>
+        <div class="col-sm-12 col-md-5 col-lg-5 reset-padding">
+            <div class="image-container h-100">
+                <img src="../../../../../assets/images/dreamer-f90.jpg" alt="login icon">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-7 col-lg-7 login-column reset-padding">
+            <div class="login-form">
+                <form>
+                    <ng-container *ngIf="loading">
+                        <app-row>
+                            <div rowContent>
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1" style="width: 50px; height: 50px; font-size: 30px"></span>
+                            </div>
+                        </app-row>
+                        <app-row>
+                            <div rowContent>
+                                <mat-label>Loading...</mat-label>
+                            </div>
+                        </app-row>
+                    </ng-container>
+
+                    <ng-container *ngIf="error && !loading">
+                        <app-row>
+                            <div rowContent>
+                                <mat-icon class="activate-icon" aria-hidden="false" color="warn" aria-label="Example home icon">warning_amber</mat-icon>
+                            </div>
+                        </app-row>
+                        <app-row>
+                            <div rowContent>
+                                <mat-label>Your account activation failed!</mat-label>
+                            </div>
+                        </app-row>
+                    </ng-container>
+
+                    <ng-container *ngIf="!error && !loading">
+                        <app-row>
+                            <div rowContent>
+                                <mat-icon class="activate-icon" aria-hidden="false" color="primary" aria-label="Example home icon">done</mat-icon>
+                            </div>
+                        </app-row>
+
+                        <app-row>
+                            <div rowContent>
+                                <mat-label>Your account activated with success!</mat-label>
+                            </div>
+                        </app-row>
+                        <app-row>
+                            <button mat-raised-button color="primary" class="mt-4 mobileFont" rowContent routerLink="/auth/login">Sign in</button>
+                        </app-row>
+                    </ng-container>
+                </form>
+            </div>
+        </div>
+    </div>
+</app-auth-layout>

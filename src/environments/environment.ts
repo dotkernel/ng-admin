@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'ddds',
+  apiUrl: 'https://api.dotkernel.net/',
 };
 
 /*
