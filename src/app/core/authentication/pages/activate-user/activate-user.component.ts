@@ -20,7 +20,6 @@ export class ActivateUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.hash);
     this.activateUser(this.hash);
   }
 

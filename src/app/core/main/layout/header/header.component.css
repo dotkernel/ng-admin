@@ -1,0 +1,16 @@
+.spacer { 
+    flex: 1 1 auto; 
+}
+
+.header {
+    vertical-align: top;
+    transition: all 0.3s ease 0s;
+}
+
+.navShow {
+    width: calc(100% - 260px);
+}
+
+.navHidden {
+    width: 100%;
+}

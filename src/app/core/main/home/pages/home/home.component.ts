@@ -11,9 +11,9 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.getUserAccount().subscribe(res => {
-      console.log(res);
-    });
+    // this.authService.getUserAccount().subscribe(res => {
+    //   console.log(res);
+    // });
   }
 
   logout() {
