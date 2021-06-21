@@ -5,7 +5,7 @@ import { LayoutService } from '../layout.service';
 @Component({
   selector: 'app-layout',
   template: `
-    <mat-sidenav-container class="example-container" hasBackdrop="false">
+    <mat-sidenav-container class="content" hasBackdrop="false">
       <mat-sidenav #sidenav mode="push" hasBackdrop="false">
         <app-side-nav></app-side-nav>
       </mat-sidenav>
@@ -19,7 +19,7 @@ import { LayoutService } from '../layout.service';
     </mat-sidenav-container>
   `,
   styles: [
-    '.example-container { width: 100%; height: 100%; }',
+    '.content { width: 100%; height: 100%; }',
     'mat-sidenav { width: 260px; }',
   ]
 })

@@ -9,6 +9,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
+import { MatRippleModule } from '@angular/material/core';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -19,11 +21,14 @@ import { SideNavComponent } from './side-nav/side-nav.component';
   ],
   imports: [
     CommonModule,
+    RouterModule,
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRippleModule,
+    MatIconModule,
   ],
   exports: [
     LayoutComponent

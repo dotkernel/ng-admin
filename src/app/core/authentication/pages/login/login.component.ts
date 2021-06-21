@@ -17,11 +17,13 @@ export class LoginComponent implements OnInit {
   error = '';
   hide = true;
 
-  constructor(public authService: AuthService,
-              private router: Router,
-              private formBuilder: FormBuilder,
-              private route: ActivatedRoute,
-              private toastr: ToastrService) {
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+  ) {
     // redirect to home if already logged in
     if (this.authService.tokenData) {
       this.router.navigate(['/main/home']);
