@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { MatRippleModule } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatRippleModule,
     MatIconModule,
+    MatExpansionModule
   ],
   exports: [
     LayoutComponent

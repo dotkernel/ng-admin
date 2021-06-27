@@ -11,6 +11,7 @@
     width: 100%;
     height: 70px;
     align-items: center;
+    cursor: pointer;
 }
 
 .brandLogo {
@@ -51,6 +52,36 @@
     font-size: 18px;
 }
 
+.arrow {
+    margin-left: 104px;
+}
+
 .active {
     background-color: #1E2237;
 }
+
+.collapse-item {
+    background: transparent;
+    box-shadow: none;
+}
+
+.colapse-item-color { 
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.collapse-item:hover {
+    background-color: #1E2237;
+    color: #fff;
+}
+
+.collapse-item:hover .colapse-item-color{
+    color: #fff;
+}
+
+.expansion-header {
+    padding: 0 20px    
+}
+
+::ng-deep .expansion-header .mat-expansion-indicator:after {
+    color: rgba(255, 255, 255, 0.7);
+  }

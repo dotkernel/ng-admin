@@ -8,17 +8,37 @@
     </div>
 
     <div class="nav-item" routerLinkActive="active" matRipple matRippleCentered="centered" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="Example home icon">dashboard</mat-icon>
+        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">dashboard</mat-icon>
         <a routerLink="/main/home" class="nav-item-text">Dashboard</a>
     </div>
     <div class="nav-item" matRipple matRippleCentered="centered">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="Example home icon">receipt</mat-icon>
-        <a routerLink="/main/home" class="nav-item-text">Notes</a>
+        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">receipt</mat-icon>
+        <a routerLink="/main/home" class="nav-item-text">Invoice</a>
     </div>
     <div class="nav-item" matRipple matRippleCentered="centered">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="Example home icon">notes</mat-icon>
+        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">notes</mat-icon>
         <span class="nav-item-text">
             Notes
         </span>
     </div>
+
+    <mat-expansion-panel class="collapse-item colapse-item-color" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title class="colapse-item-color">
+                <mat-icon aria-hidden="false" aria-label="icon" class="mr-3">notes</mat-icon>Self aware panel
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        
+        <div class="nav-item" matRipple matRippleCentered="centered">
+            <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">notes</mat-icon>
+            <span class="nav-item-text">
+                Notes
+            </span>
+        </div>
+
+        <div class="nav-item" matRipple matRippleCentered="centered">
+            <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">receipt</mat-icon>
+            <a routerLink="/main/home" class="nav-item-text">Invoice</a>
+        </div>
+    </mat-expansion-panel>
 </div>

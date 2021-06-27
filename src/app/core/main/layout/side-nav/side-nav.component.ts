@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
   public title: string = 'Ng Admin';
+  public panelOpenState: boolean = false;
 
   constructor() { }
 
