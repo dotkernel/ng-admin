@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { MenuItem } from '../../../../interfaces/navigation';
+import { MENU_ITEM_TOKEN } from '../../../../configs/configToken';
 
 @Component({
   selector: 'app-side-nav',
@@ -9,9 +11,13 @@ export class SideNavComponent implements OnInit {
   public title: string = 'Ng Admin';
   public panelOpenState: boolean = false;
 
-  constructor() { }
+  public defaultIcon: string = 'dashboard';
 
-  ngOnInit(): void {
+  constructor(
+    @Optional() @Inject(MENU_ITEM_TOKEN)
+    public readonly menuItems: MenuItem | null
+  ) {
   }
 
+  ngOnInit(): void { }
 }

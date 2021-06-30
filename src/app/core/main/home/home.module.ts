@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
+import { menuItems } from '../../../configs/menu';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { InvoiceComponent } from './pages/invoice/invoice.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    LayoutModule
+    LayoutModule.forRoot(menuItems)
   ],
 })
 export class HomeModule { }

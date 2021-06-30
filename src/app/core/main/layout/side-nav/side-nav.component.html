@@ -1,5 +1,5 @@
 <div class="navigation">
-    <div class="brand">
+    <div class="brand" routerLink='/main/home'>
         <img src="../../../../../assets/images/brand_logo.png" alt="brand logo" class="brandLogo">
 
         <span class="brandText">
@@ -7,38 +7,31 @@
         </span>
     </div>
 
-    <div class="nav-item" routerLinkActive="active" matRipple matRippleCentered="centered" [routerLinkActiveOptions]="{exact: true}" routerLink="/main/home">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">dashboard</mat-icon>
-        <a class="nav-item-text">Dashboard</a>
-    </div>
-    <div class="nav-item" matRipple matRippleCentered="centered" routerLinkActive="active" routerLink="/main/home/invoice" [routerLinkActiveOptions]="{exact: true}">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">receipt</mat-icon>
-        <a class="nav-item-text">Invoice</a>
-    </div>
-    <div class="nav-item" matRipple matRippleCentered="centered">
-        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">notes</mat-icon>
-        <span class="nav-item-text">
-            Notes
-        </span>
-    </div>
+    <ng-template ngFor let-item [ngForOf]="menuItems">
+        <div class="nav-item" routerLinkActive="active" matRipple matRippleCentered="centered" [routerLinkActiveOptions]="{exact: true}" [routerLink]="item.path" *ngIf="!item.childrens; else elseBlock">
+            <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">{{ item.icon ? item.icon : defaultIcon }}</mat-icon>
+            <a class="nav-item-text">{{ item.title }}</a>
+        </div>
 
-    <mat-expansion-panel class="collapse-item colapse-item-color" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-        <mat-expansion-panel-header class="expansion-header">
-            <mat-panel-title class="colapse-item-color">
-                <mat-icon aria-hidden="false" aria-label="icon" class="mr-3">notes</mat-icon>Self aware panel
-            </mat-panel-title>
-        </mat-expansion-panel-header>
+        <ng-template #elseBlock>
+            <mat-expansion-panel class="collapse-item colapse-item-color" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+
+                <mat-expansion-panel-header class="expansion-header">
+                    <mat-panel-title class="colapse-item-color">
+                        <mat-icon aria-hidden="false" aria-label="icon" class="mr-3">{{ item.icon ? item.icon : defaultIcon }}</mat-icon>{{ item.title }}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                
+                <ng-template ngFor let-children [ngForOf]="item.childrens">
+                    <div class="nav-item" routerLinkActive="active" matRipple matRippleCentered="centered" [routerLinkActiveOptions]="{exact: true}" [routerLink]="children.path">
+                        <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">{{ children.icon ? children.icon : defaultIcon }}</mat-icon>
+                        <a class="nav-item-text">{{ children.title }}</a>
+                    </div>
+                </ng-template>
+
+            </mat-expansion-panel>
+        </ng-template>
         
-        <div class="nav-item" matRipple matRippleCentered="centered" routerLinkActive="active" routerLink="/main/home/invoice">
-            <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">notes</mat-icon>
-            <span class="nav-item-text">
-                invoice
-            </span>
-        </div>
+    </ng-template>
 
-        <div class="nav-item" matRipple matRippleCentered="centered">
-            <mat-icon class="mr-3 mt-2 nav-item-icon" aria-hidden="false" aria-label="icon">receipt</mat-icon>
-            <a routerLink="/main/home" class="nav-item-text">notes</a>
-        </div>
-    </mat-expansion-panel>
 </div>
