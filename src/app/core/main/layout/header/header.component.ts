@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatToolbar } from '@angular/material/toolbar';
+import { AuthService } from 'src/app/core/authentication/services/auth.service';
 import { LayoutService } from '../layout.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: LayoutService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    public authService: AuthService
   ) { }
 
   ngAfterViewInit(): void {

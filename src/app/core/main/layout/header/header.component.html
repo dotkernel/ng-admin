@@ -7,12 +7,14 @@
         <span>My App</span>
         <span class="spacer"></span>
         
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-            <mat-icon>favorite</mat-icon>
+        <button mat-icon-button aria-label="icon" [matMenuTriggerFor]="menu">
+            <mat-icon aria-hidden="false" aria-label="icon">account_circle</mat-icon>
         </button>
-        
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-            <mat-icon>share</mat-icon>
-        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="authService.logout()">
+                <mat-icon aria-hidden="false" aria-label="icon">power_settings_new</mat-icon>Logout
+            </button>
+        </mat-menu>
+
     </mat-toolbar>
 </div>

@@ -12,6 +12,7 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { MatRippleModule } from '@angular/material/core';
 import { RouterModule } from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatButtonModule,
     MatRippleModule,
     MatIconModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   exports: [
     LayoutComponent
