@@ -5,6 +5,9 @@
 .header {
     vertical-align: top;
     transition: all 0.3s ease 0s;
+    flex-shrink: 0;
+    position: fixed;
+    z-index: 99999;
 }
 
 .navShow {

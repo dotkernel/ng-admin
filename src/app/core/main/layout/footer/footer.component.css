@@ -1,0 +1,5 @@
+footer {
+    flex-shrink: 1;
+    top: 64px;
+    position: relative;
+}

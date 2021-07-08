@@ -11,11 +11,6 @@ export const menuItems: MenuItem[] = [
         icon: 'receipt',
         childrens: [
             {
-                title: 'Dashboard',
-                icon: 'dashboard',
-                path: '/main/home'
-            },
-            {
                 title: 'Invoice',
                 icon: 'notes',
                 path: '/main/home/invoice'

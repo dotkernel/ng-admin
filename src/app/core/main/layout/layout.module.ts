@@ -21,7 +21,7 @@ import { MENU_ITEM_TOKEN } from '../../../configs/configToken';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    SideNavComponent
+    SideNavComponent,
   ],
   imports: [
     CommonModule,
@@ -34,10 +34,10 @@ import { MENU_ITEM_TOKEN } from '../../../configs/configToken';
     MatRippleModule,
     MatIconModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
   ],
   exports: [
-    LayoutComponent
+    LayoutComponent,
   ]
 })
 export class LayoutModule {
