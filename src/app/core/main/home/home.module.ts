@@ -1,3 +1,4 @@
+import { PipesModule } from './../../../pipes/pipes.module';
 import { LayoutModule } from './../layout/layout.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { menuItems } from '../../../configs/menu';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    LayoutModule.forRoot(menuItems)
+    LayoutModule.forRoot(menuItems),
+    PipesModule
   ],
 })
 export class HomeModule { }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { LayoutService } from '../layout.service';
 
@@ -10,7 +10,7 @@ import { LayoutService } from '../layout.service';
         <app-side-nav></app-side-nav>
       </mat-sidenav>
 
-      <mat-sidenav-content class="sidenav-content">
+      <mat-sidenav-content class="sidenav-content" #content>
 
         <div class="ng-container">
 
@@ -34,18 +34,31 @@ import { LayoutService } from '../layout.service';
     'main::-webkit-scrollbar-track { -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); }',
     'main::-webkit-scrollbar-thumb { background-color: darkgrey; outline: 1px solid slategrey; }',
     'main { position: relative; top: 64px; padding: 15px }',
-    '.sidenav-content { width: calc(100% - 260px); }'
+    '.sidenav-content { width: calc(100% - 260px); }',
+    '.navShow { width: calc(100% - 260px); }',  
+    '.navHidden { width: 100%; }'
   ]
 })
 export class LayoutComponent implements OnInit, AfterViewInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('content') content;
 
-  constructor(public service: LayoutService) { }
+  public isShowing: boolean = true;
+
+  constructor(
+    public service: LayoutService,
+    private renderer: Renderer2
+  ) { }
 
   ngAfterViewInit(): void {
     this.service.getToggle().subscribe(
-      () => {
+      (res) => {
         this.sidenav.toggle();
+        this.isShowing = res;
+
+        this.renderer.removeClass(this.content.elementRef.nativeElement, 'navShow');
+        this.renderer.removeClass(this.content.elementRef.nativeElement, 'navHidden');
+        this.renderer.addClass(this.content.elementRef.nativeElement, this.isShowing ? 'navShow' : 'navHidden');
       }
     );
   }

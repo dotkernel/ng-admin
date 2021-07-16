@@ -2,4 +2,10 @@ footer {
     flex-shrink: 1;
     top: 64px;
     position: relative;
+    background-color:#232A44;
+    min-height: 64px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
