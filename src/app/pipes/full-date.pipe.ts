@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { apiFormatDate } from '../utils/dateFormat';
+import { apiFormatDate } from '../utils'
 
 @Pipe({
   name: 'fullDate'

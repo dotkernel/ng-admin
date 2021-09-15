@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { prettyDate } from '../utils/dateFormat';
+import { prettyDate } from '../utils';
 
 @Pipe({
   name: 'prettyDate'
