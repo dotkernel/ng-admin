@@ -15,6 +15,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatMenuModule } from '@angular/material/menu';
 import { MenuItem } from '../../../interfaces/navigation';
 import { MENU_ITEM_TOKEN } from '../../../configs/configToken';
+import { BreadcrumbComponent } from 'src/app/common/breadcrumb/breadcrumb.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +24,7 @@ import { MENU_ITEM_TOKEN } from '../../../configs/configToken';
     HeaderComponent,
     FooterComponent,
     SideNavComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     CommonModule,

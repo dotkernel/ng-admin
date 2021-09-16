@@ -1,0 +1,27 @@
+<div class="breadcrumb d-flex align-items-center">
+  <div class="d-flex align-items-center">
+    <h1 class="font-bold m-0">{{ currentPage | titlecase }}</h1>
+    <h1 class="mx-2 m-0 font-weight-bold mobile-look text-look">|</h1>
+    <mat-icon class="cursor-pointer home-icon" routerLink="/main/home"
+      >home</mat-icon
+    >
+    <mat-icon class="arrow-height">arrow_forward_ios</mat-icon>
+  </div>
+  <div
+    class="d-flex align-items-center"
+    *ngFor="let elem of words; let last = last; let i = index"
+    [attr.data-index]="i"
+  >
+    <div *ngIf="last; else elseBlock">
+      <span class="text-look text-look2 font-weight-bold">{{
+        elem | titlecase
+      }}</span>
+    </div>
+    <ng-template #elseBlock>
+      <a [routerLink]="getUrl(words, i)" class="text-look font-weight-bold">{{
+        elem | titlecase
+      }}</a>
+      <mat-icon class="arrow-height">arrow_forward_ios</mat-icon>
+    </ng-template>
+  </div>
+</div>
