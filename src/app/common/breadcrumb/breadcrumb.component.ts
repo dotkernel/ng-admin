@@ -1,24 +1,30 @@
 import { Component, OnInit } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
+import { MainService } from "../../services/main.service";
 
 @Component({
   selector: "app-breadcrumb",
   templateUrl: "./breadcrumb.component.html",
   styleUrls: ["./breadcrumb.component.css"],
+  providers: [MainService],
 })
 export class BreadcrumbComponent {
   words = [];
   currentPage: string = "";
-  constructor(private router: Router) {
+  result = [];
+  path = "";
+  constructor(private router: Router, private mainService: MainService) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.words = [];
-        event.url.split("/").forEach((element) => {
-          if (element != "" && element != "main") {
-            this.words.push(element);
-          }
-        });
-        this.currentPage = this.words[this.words.length - 1];
+        this.currentPage = "";
+        this.result = [];
+        this.path = "";
+
+        this.result = this.mainService.bredcrumb(event.url);
+        this.words = this.result[0];
+
+        this.currentPage = this.result[1];
       }
     });
   }
