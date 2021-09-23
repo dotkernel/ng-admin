@@ -1,33 +1,52 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: "root",
 })
 export class MainService {
-  words = [];
-  currentPage: string = "";
-  data = [];
-  constructor() {}
+  obj: { data: [] };
+  constructor(private http: HttpClient) {}
 
   /**
    *
-   * @param url
-   * @returns array[[elem1,elem2,..], currentPage]
+   * @param endpoint string
+   * @param obj object
    */
-  bredcrumb(url) {
-    this.words = [];
-    this.data = [];
-
-    url.split("/").forEach((element) => {
-      if (element != "" && element != "main") {
-        this.words.push(element);
+  get(endpoint: string, obj: object) {
+    let link = "";
+    if (endpoint !== "" && obj !== null) {
+      endpoint = endpoint.replace(":", "/");
+      if (obj.hasOwnProperty("uuid")) {
+        endpoint = endpoint.replace("uuid", obj["uuid"]);
+        link = environment.apiUrl + endpoint;
+      } else {
+        window.alert("Something went wrong!");
       }
-    });
-
-    this.currentPage = this.words[this.words.length - 1];
-    this.data.push(this.words);
-    this.data.push(this.currentPage);
-
-    return this.data;
+      this.http.get(link).subscribe((response) => {
+        console.log(response);
+      });
+    } else {
+      window.alert("Something went wrong!");
+    }
   }
+
+  /**
+   *
+   * @param val string
+   * @param val2 object
+   */
+  post(val: string, val2: object) {
+    if (val !== "" && val2 !== null) {
+      const link = environment.apiUrl + val;
+      this.http.post(link, val2).subscribe();
+    } else {
+      window.alert("Something went wrong!");
+    }
+  }
+  //@TODO
+  delete() {}
+  //@TODO
+  patch() {}
 }
