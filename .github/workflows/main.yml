@@ -29,4 +29,4 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           artifacts: "dist/material-kit-admin/*"
-          token: ${{ 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 }}
+          token: "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"
