@@ -1,31 +1,32 @@
-name: CI / CD for Angular
-on:
-  push:
-    branches: [ "13" ]
-
+on: push
+name: Build Angular
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [ 16.x ]
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v1
 
-      - name: Set up node.js
-        uses: actions/setup-node@v3.3.0
+      - name: Cache node modules
+        uses: actions/cache@v1
         with:
-          node-version: '16'
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Build
-        run: npm run build
-
-      - name: Deploy to GitHub Pages
-        uses: crazy-max/ghaction-github-pages@v3
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
-          target_branch: gh-pages
-          build_dir: dist/material-kit-admin
-        env:
-          GITHUB_TOKEN: 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
+          node-version: ${{ matrix.node-version }}
+      - name: npm install and npm run build
+        run: |
+          npm i
+          npm run build
+      - name: Push Build to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: dist/material-kit-admin
+          token: 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
