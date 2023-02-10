@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MiscellaneousRoutingModule } from './miscellaneous-routing.module';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { RouterModule } from '@angular/router';
 import { MiscellaneousComponent } from './miscellaneous.component';
 

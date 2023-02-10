@@ -6,11 +6,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatLegacyButtonModule as MatButtonModule} from '@angular/material/legacy-button';
+import {MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
+import {MatLegacyInputModule as MatInputModule} from '@angular/material/legacy-input';
+import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
 import { RowComponent } from '../../common/row/row.component';
 import { AuthLayoutComponent } from './components/auth-layout/auth-layout.component';
 import { ForgoPwdComponent } from './pages/forgo-pwd/forgo-pwd.component';
