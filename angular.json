@@ -138,7 +138,6 @@
       }
     }
   },
-  "defaultProject": "material-kit-admin",
   "cli": {
     "analytics": false
   }

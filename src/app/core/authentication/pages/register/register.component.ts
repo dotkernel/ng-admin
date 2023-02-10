@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import {ToastrService} from 'ngx-toastr';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {first} from 'rxjs/operators';
 import {MustMatch} from '../../helpers/must-match.validator';
 
@@ -12,14 +12,14 @@ import {MustMatch} from '../../helpers/must-match.validator';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
   loading = false;
   submitted = false;
   hide = true;
   hideConfirm = true;
 
   constructor(public authService: AuthService,
-              private formBuilder: FormBuilder,
+              private formBuilder: UntypedFormBuilder,
               private route: ActivatedRoute,
               private router: Router,
               private toastr: ToastrService) { }
