@@ -16,7 +16,6 @@
     padding: 35px !important;
     display: flex;
     justify-content: center;
-    text-align: center;
 }
 
 .login-column {
@@ -75,4 +74,13 @@
 .error-align {
     text-align: left;
     padding-left: 10.5px;
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+}
+
+::ng-deep mat-checkbox label {
+    margin-bottom: 0 !important;
 }
