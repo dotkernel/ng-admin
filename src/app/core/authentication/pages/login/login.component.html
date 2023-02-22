@@ -30,10 +30,12 @@
 
                 <app-row>
                     <div rowContent>
-                        <mat-checkbox color="primary" class="float-left mobileFont" formControlName="terms">
+                        <div class="checkbox-container">
+                        <mat-checkbox color="primary" class="float-left mobileFont test2" formControlName="terms">
                             I have read and agree to the terms of service.
                         </mat-checkbox>
                         <mat-error class="mat-form-field-subscript-wrapper error-align" *ngIf="f.terms.errors">You must agree term of service.</mat-error>
+                        </div>
                     </div>
                 </app-row>
 
