@@ -1,6 +1,6 @@
 {
-  "name": "material-kit-admin",
-  "version": "0.0.3",
+  "name": "demo-admin",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",

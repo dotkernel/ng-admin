@@ -34,8 +34,8 @@ export class AuthService {
     data.append('grant_type', 'password');
     data.append('username', username);
     data.append('password', password);
-    data.append('client_id', 'frontend');
-    data.append('client_secret', 'frontend');
+    data.append('client_id', 'admin');
+    data.append('client_secret', 'admin');
     data.append('scope', 'api');
     return this.http.post<any>(`${environment.apiUrl}security/generate-token`, data)
       .pipe(map(tokenData => {

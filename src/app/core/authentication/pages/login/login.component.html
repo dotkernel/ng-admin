@@ -10,9 +10,9 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <app-row>
                     <mat-form-field appearance="outline" class="w-100 form-input" rowContent>
-                        <mat-label>Email</mat-label>
-                        <input matInput placeholder="Email" formControlName="email">
-                        <mat-error *ngIf="f.email.errors">Email is required.</mat-error>
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Username" formControlName="email">
+                        <mat-error *ngIf="f.email.errors">Username is required.</mat-error>
                     </mat-form-field>
                 </app-row>
 
