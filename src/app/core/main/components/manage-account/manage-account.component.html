@@ -1,0 +1,71 @@
+<div mat-dialog-title class="dialog-title">
+    <h3 class="dialog-header">Manage account</h3>
+    <button mat-icon-button mat-dialog-close color="basic">
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content class="mat-typography">
+    <div class="example-loading-shade" *ngIf="loading">
+        <mat-spinner class="mt-5 mb-5"></mat-spinner>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!loading">
+        <div class="mt-3">
+            <mat-form-field appearance="outline" class="w-100 form-input">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Name" formControlName="identity">
+                <mat-error *ngIf="f.identity.errors?.required">Email is required.</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <mat-form-field appearance="outline" class="w-100 form-input">
+                <mat-label>First name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstname">
+                <mat-error *ngIf="f.firstname.errors?.required">First name is required.</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <mat-form-field appearance="outline" class="w-100 form-input">
+                <mat-label>Last name</mat-label>
+                <input matInput placeholder="Last name" formControlName="lastname">
+                <mat-error *ngIf="f.lastname.errors?.required">Last name is required.</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3">
+            <mat-form-field appearance="outline" class="w-100 form-input">
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" formControlName="password" [type]="hide ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix class="d-inline-block" (click)="generatePassword()" matTooltip="Generate random password">
+                    <mat-icon>vpn_key</mat-icon>
+                </button>
+                <button type="button" mat-icon-button matSuffix class="d-inline-block" (click)="hide = !hide" matTooltip="Show/hide password" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.password.errors?.required">Password is required.</mat-error>
+                <mat-error *ngIf="f.password.errors?.minlength">Password must be at least 6 characters.</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="mt-3 mb-2">
+            <mat-form-field appearance="outline" class="w-100 form-input">
+                <mat-label>Confirm Password</mat-label>
+                <input matInput placeholder="ConfirmPassword" formControlName="passwordConfirm" [type]="hideConfirm ? 'password' : 'text'">
+                <button type="button" mat-icon-button matSuffix class="d-inline-block" (click)="copyPassToClipboard()" matTooltip="Copy password to clipboard">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+                <button type="button" mat-icon-button matSuffix class="d-inline-block" matTooltip="Show/hide password" (click)="hideConfirm = !hideConfirm" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hideConfirm">
+                    <mat-icon>{{hideConfirm ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="f.passwordConfirm.errors?.required">Password confirmation is required.</mat-error>
+                <mat-error *ngIf="f.passwordConfirm.errors?.mustMatch">Passwords must match.</mat-error>
+            </mat-form-field>
+        </div>
+
+        <div class="float-right mb-1">
+            <button type="button" mat-raised-button mat-dialog-close class="float-left mr-2 mobileFont">Cancel</button>
+            <button mat-raised-button color="primary" class="float-left mobileFont">Save</button>
+        </div>
+    </form>
+</mat-dialog-content>

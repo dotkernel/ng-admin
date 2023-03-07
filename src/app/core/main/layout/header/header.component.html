@@ -1,15 +1,22 @@
 <div #header class="header">
     <mat-toolbar>
-        <button mat-icon-button (click)="toggleNav()">
+        <button mat-icon-button (click)="toggleNav()" class="header-name">
             <mat-icon>menu</mat-icon>
         </button>
-    
+
+        <span class="header-name">Demo Admin</span>
         <span class="spacer"></span>
-        
-        <button mat-icon-button aria-label="icon" [matMenuTriggerFor]="menu">
+        <span class="name mr-2" [matMenuTriggerFor]="menu">
+            {{ account ? '' : 'loading...'}}
+            {{ account?.firstName && account?.lastName ? account.firstName + ' ' + account?.lastName : account?.identity}}
+        </span>
+        <button mat-mini-fab aria-label="icon" color="primary" [matMenuTriggerFor]="menu" class="mr-4">
             <mat-icon aria-hidden="false" aria-label="icon">account_circle</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openAccount(account)">
+                <mat-icon aria-hidden="false" aria-label="icon">manage_accounts</mat-icon>Manage account
+            </button>
             <button mat-menu-item (click)="authService.logout()">
                 <mat-icon aria-hidden="false" aria-label="icon">power_settings_new</mat-icon>Logout
             </button>

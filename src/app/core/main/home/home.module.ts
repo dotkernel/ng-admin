@@ -7,10 +7,12 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { menuItems } from '../../../configs/menu';
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 @NgModule({
   declarations: [
     HomeComponent,
+    DashboardComponent,
     InvoiceComponent,
   ],
   imports: [

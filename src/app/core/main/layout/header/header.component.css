@@ -10,10 +10,21 @@
     z-index: 99999;
 }
 
+.header-name {
+    font: 500 20px/32px Roboto,Helvetica Neue,sans-serif;
+    letter-spacing: normal;
+}
+
 .navShow {
     width: calc(100% - 260px);
 }
 
 .navHidden {
     width: 100%;
+}
+
+.name {
+    font-size: 16px;
+    font-weight: 400;
+    cursor: pointer;
 }

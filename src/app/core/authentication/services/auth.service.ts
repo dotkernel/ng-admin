@@ -14,11 +14,13 @@ export class AuthService {
   public token: Observable<Token>;
   private userAccountSubject: BehaviorSubject<any>;
   public userAccount: Observable<any>;
+  public accountSubject: BehaviorSubject<any>;
 
   constructor(private router: Router,
               private http: HttpClient) {
     this.tokenDataSubject = new BehaviorSubject<Token>(JSON.parse(localStorage.getItem('tokenData')));
     this.token = this.tokenDataSubject.asObservable();
+    this.accountSubject = new BehaviorSubject(null);
   }
 
   public goTo(destination: string): void {
@@ -48,9 +50,8 @@ export class AuthService {
   }
 
   getUserAccount() {
-    return this.http.get(environment.apiUrl + `user/my-account`)
+    return this.http.get(environment.apiUrl + `admin/my-account`)
       .pipe(map((res: any) => {
-        this.userAccountSubject.next(res);
         return res;
       }),
     );

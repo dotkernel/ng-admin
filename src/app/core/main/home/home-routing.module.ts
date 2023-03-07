@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { HomeComponent as HomePage } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        component: HomePage
+        component: DashboardComponent
       },
       {
         path: 'invoice',

@@ -8,7 +8,7 @@ import { MENU_ITEM_TOKEN } from '../../../../configs/configToken';
   styleUrls: ['./side-nav.component.css']
 })
 export class SideNavComponent implements OnInit {
-  public title: string = 'Ng Admin';
+  public title: string = 'Demo Admin';
   public panelOpenState: boolean = false;
 
   public defaultIcon: string = 'dashboard';
