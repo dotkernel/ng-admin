@@ -8,12 +8,16 @@ import { HomeComponent } from './home.component';
 import { InvoiceComponent } from './pages/invoice/invoice.component';
 import { menuItems } from '../../../configs/menu';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import { AdminComponent } from './pages/admin/admin.component';
+import { UserComponent } from './pages/user/user.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     DashboardComponent,
     InvoiceComponent,
+    AdminComponent,
+    UserComponent,
   ],
   imports: [
     CommonModule,

@@ -7,6 +7,16 @@ export const menuItems: MenuItem[] = [
         path: '/main/home'
     },
     {
+        title: 'Admins',
+        icon: 'admin_panel_settings',
+        path: '/main/home/admins',
+    },
+    {
+        title: 'Users',
+        icon: 'supervisor_account',
+        path: '/main/home/users',
+    },
+    {
         title: 'Collapse',
         icon: 'receipt',
         childrens: [
