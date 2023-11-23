@@ -75,14 +75,14 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-kit-admin:build"
+            "buildTarget": "material-kit-admin:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "material-kit-admin:build:production"
+              "buildTarget": "material-kit-admin:build:production"
             },
             "development": {
-              "browserTarget": "material-kit-admin:build:development"
+              "buildTarget": "material-kit-admin:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -90,7 +90,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-kit-admin:build"
+            "buildTarget": "material-kit-admin:build"
           }
         },
         "test": {
